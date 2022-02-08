@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="checks">
+
+        </div>
+        
+        <script>
+            let checks = document.getElementById("checks")
+
+            for(let i = 0; i < 8; i++){
+                checks.innerHTML += `<input type="checkbox">`
+            }
+            checks.innerHTML += `<button onclick="bin2dec()">=</button>` 
+            checks.innerHTML += `<span id="result"></span>` 
+
+            function bin2dec() {
+                let result = document.getElementById("result")
+                let check = checks.getElementsByTagName("input")
+                let bin = ""
+                let dec = 0
+
+                for (let i = 0; i < check.length; i++){
+                    if(check[i].checked){
+                        bin += "1"
+                        dec += 2**(7 - i)
+                    }
+                    else bin += "0"
+                }
+                result.innerHTML = bin + "<sub>2</sub> = " + dec + "<sub>10</sub>"     
+            }
+        </script>
+    </body>
+</html>
